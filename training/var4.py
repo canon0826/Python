@@ -21,3 +21,13 @@ print(b.isdigit())
 # 出力結果
 # True
 # False
+
+b = "こんにちは"
+if b.isdigit():
+    print(int(b)+23)
+else:
+    print("数値ではない")
+
+# 出力結果
+# 数値ではない
+# if文は条件によって異なる処理を行う際使用する
