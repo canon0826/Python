@@ -22,3 +22,13 @@ print(total)
 
 # 出力結果
 # 394
+
+# for文 (入れ子)  内側のfor文が全てくり返し終わるまでくり返す
+
+# for カウント変数1 in range(回数):
+#     for カウント変数2 in range(回数):
+#         くり返す処理
+
+for i in range(10):
+    for j in range(10):
+        print(j,"x",i,"=",j*i)
