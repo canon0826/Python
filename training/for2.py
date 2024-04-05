@@ -12,3 +12,13 @@ for i in scorelist:
 # 78
 # 80
 # 72
+
+# リスト(scorelist)の中の合計を求める
+scorelist = [64,100,78,80,72]
+total = 0
+for i in scorelist:
+    total = total + i
+print(total)
+
+# 出力結果
+# 394
