@@ -52,3 +52,12 @@ sayhello2("フタバ")
 
 # 出力結果
 # こんにちは、フタバさん。
+
+# 戻り値だけある関数は処理に変化があるので知りたい時に使用する
+
+import random
+def omikuji():
+    kuji = ['大吉', '中吉', '小吉', '凶']
+    return random.choice(kuji)
+kekka = omikuji()
+print("結果は",kekka,"です")
