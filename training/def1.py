@@ -42,3 +42,13 @@ print(postTaxPrice(980),"円")
 # def関数名(引数):と指定
 # 関数名をpostTaxPriceとするならdef postTaxPrice(price):と指定。
 # 作成した関数はpostTaxPrice(本体価格)で呼び出す。
+
+
+# 引数だけある関数は値を渡し処理を調整したい時に使用する
+
+def sayhello2(name):
+    print("こんにちは、"+ name + "さん。")
+sayhello2("フタバ")
+
+# 出力結果
+# こんにちは、フタバさん。
