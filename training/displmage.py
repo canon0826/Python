@@ -3,6 +3,11 @@ import tkinter.filedialog as fd
 import PIL.Image
 import PIL.ImageTk
 
+def openFile():
+    fpath = fd.askopenfilename()
+    if fpath:
+        dispPhoto(fpath)
+
 root = tk.Tk()
 root.geometry("400x350")
 
