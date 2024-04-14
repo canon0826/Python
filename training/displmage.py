@@ -5,7 +5,7 @@ import PIL.ImageTk
 
 def dispPhoto(path):
     
-    newImage = PIL.Image.open(path).resize((300,300))
+    newImage = PIL.Image.open(path).convert("L").resize((300,300))
 
     imageData = PIL.ImageTk.PhotoImage(newImage)
     imageLabel.configure(image = imageData)
