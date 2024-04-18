@@ -16,3 +16,22 @@ def imageToData(filename):
   numImage = numImage.flatten()
 
   return numImage
+
+# 数字を予測する
+def predictDigits(data):
+
+# 学習用ファイルを読み込む
+  digits = sklearn.datasets.load_digits()
+
+# 機械学習する
+  clf = sklearn.svm.SVC(gamma = 0.001)
+  clf.fit(digits.data,digits.target)
+
+# 予測結果を表示する
+n = clf.predict([data])
+print("予測=",n)
+
+# 画像ファイルを数値リストに変換する
+data = imageToData("2.png")
+# 数字を予測する
+predictDigits(data)
