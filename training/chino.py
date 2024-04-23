@@ -39,3 +39,15 @@ clf.fit(digits.data, digits.target)
 # 予測結果を表示
 n = clf.predict([data])
 textLabel.configure(text = "この画像は"+str(n)+"です！")
+# アプリのウィンドウを作る
+root = tk.Tk()
+root.geometry("400x400")
+
+btn = tk.Button(root, text="ファイルを開く", command=openFile)
+imageLabel = tk.Label()
+btn.pack()
+imageLabel.pack()
+# 予測結果を表示するラベル
+text()Label = tk.Label(text="数字を認識します！")
+textLabel.pack()
+tk.mainloop()
