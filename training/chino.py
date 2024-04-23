@@ -16,6 +16,14 @@ def imageToData(filename):
     dispImage = PIL.ImageTk.PhotoImage(grayImage.resize((300,300),resample=0))
     imageLabel.configure(image = dispImage)
     imageLabel.image = dispImage
+# ファイルダイアログを開く
+def openFile():
+    fpath = fd.askopenfilename()
+    if fpath:
+# 画像ファイルを数値リストに変換する
+        data = imageToData(fpath)
+# 数字を予測する
+predictDigits(data)
 # 数値リストに変換
 numImage = numpy.asarray(grayImage, dtype = float)
 numImage = 16 - numpy.floor(17 * numImage / 256)
