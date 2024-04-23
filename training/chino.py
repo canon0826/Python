@@ -16,29 +16,32 @@ def imageToData(filename):
     dispImage = PIL.ImageTk.PhotoImage(grayImage.resize((300,300),resample=0))
     imageLabel.configure(image = dispImage)
     imageLabel.image = dispImage
+# 数値リストに変換
+    numImage = numpy.asarray(grayImage, dtype = float)
+    numImage = 16 - numpy.floor(17 * numImage / 256)
+    numImage = numImage.flatten()
+    return numImage
+
+# 数字を予測する
+def predictDigits(data):
+# 学習用データを読み込む
+    digits = sklearn.datasets.load_digits()
+# 機械学習する
+    clf = sklearn.svm.SVC(gamma = 0.001)
+    clf.fit(digits.data, digits.target)
+# 予測結果を表示
+    n = clf.predict([data])
+    textLabel.configure(text = "この画像は"+str(n)+"です！")
+
 # ファイルダイアログを開く
 def openFile():
     fpath = fd.askopenfilename()
     if fpath:
 # 画像ファイルを数値リストに変換する
         data = imageToData(fpath)
-# 数字を予測する
-predictDigits(data)
-# 数値リストに変換
-numImage = numpy.asarray(grayImage, dtype = float)
-numImage = 16 - numpy.floor(17 * numImage / 256)
-numImage = numImage.flatten()
-return numImage
 # 数字を予測
-def predictDigits(data):
-# 学習用データを読み込む
-digits = sklearn.datasets.load_digits()
-# 機械学習する
-clf = sklearn.svm.SVC(gamma = 0.001)
-clf.fit(digits.data, digits.target)
-# 予測結果を表示
-n = clf.predict([data])
-textLabel.configure(text = "この画像は"+str(n)+"です！")
+        predictDigits(data)
+
 # アプリのウィンドウを作る
 root = tk.Tk()
 root.geometry("400x400")
@@ -47,7 +50,9 @@ btn = tk.Button(root, text="ファイルを開く", command=openFile)
 imageLabel = tk.Label()
 btn.pack()
 imageLabel.pack()
+
 # 予測結果を表示するラベル
-text()Label = tk.Label(text="数字を認識します！")
+textLabel = tk.Label(text="数字を認識します！")
 textLabel.pack()
+
 tk.mainloop()
